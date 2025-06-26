@@ -1,8 +1,13 @@
-<script>
+<script lang="ts">
   let title = $state("La ToDo App");
-  const handleClick = () => {
+
+  function handleClick() {
     alert("Bouton cliqué !");
     title = "La Todo App d'Alois & Asmae"
+  };
+
+  function switchTheme() {
+      
   };
 </script>
 
