@@ -1,9 +1,10 @@
 <script lang="ts">
     import Header from '$lib/components/header/Header.svelte' ; 
-    import type { Task } from '$lib/components/task/taskType.ts';
+	import Task from '$lib/components/task/Task.svelte';
+    import type { TaskType } from '$lib/components/task/taskType.ts';
     import './home-page.scss';
 
-    let tasks: Array<Task> = $state([]);
+    let tasks: Array<TaskType> = $state([]);
     let nb_tasks = $derived(tasks.length);
 
     function add_task(e: SubmitEvent) {
@@ -21,12 +22,13 @@
             return;
         }
 
-        let task: Task = {
+        let task: TaskType = {
             name: name,
             description: (description ? description : ""),
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
         };
+
 
         console.log(task);
         
@@ -54,3 +56,6 @@
     <input type="submit" value="Submit">
 </form>
 
+{#if nb_tasks>0}
+    <Task name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
+{/if}
