@@ -1,4 +1,5 @@
 <script lang="ts">
+    import Header from '$lib/components/header/Header.svelte' ; 
     import type { Tache } from '$lib/routes/tacheType.ts';
     import './home-page.scss';
 
@@ -37,7 +38,8 @@
 
 </script>
 
-<h1>TodoApp</h1>
+<Header title = "La ToDo App d'Alois & Asmae" /> 
+
 <p>Nombre de taches : {nb_tasks}</p>
 
 <form onsubmit={add_task}>
@@ -51,3 +53,4 @@
     <input type="number" id="complexity" name="complexity"><br>
     <input type="submit" value="Submit">
 </form>
+
