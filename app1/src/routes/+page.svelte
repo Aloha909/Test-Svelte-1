@@ -38,19 +38,31 @@
 
 </script>
 
-<Header title = "La ToDo App d'Alois & Asmae" /> 
+<Header/> 
 
 <p>Nombre de taches : {nb_tasks}</p>
 
 <form onsubmit={add_task}>
-    <label for="name">Titre</label><br>
-    <input type="text" id="name" name="name"><br>
-    <label for="description">Description</label><br>
-    <input type="text" id="description" name="description"><br>
-    <label for="state">Terminée ?</label><br>
+    <div>
+    <label for="name">Titre</label>  
+    <input type="text" id="name" name="name">
+    <div/> <br> 
+
+    <div>
+    <label for="description">Description</label>
+    <input type="text" id="description" name="description">
+    <div/> <br> 
+
+    <div>
+    <label for="state">Terminée ? </label>
     <input type="checkbox" id="state" name="state" value="finished"><br>
-    <label for="complexity">Complexité</label><br>
+    <div/> <br>
+
+    <div>
+    <label for="complexity">Complexité</label>
     <input type="number" id="complexity" name="complexity"><br>
+    <div/> <br>
+
     <input type="submit" value="Submit">
 </form>
 
