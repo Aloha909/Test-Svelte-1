@@ -1,6 +1,6 @@
 <script lang="ts">
     import Header from '$lib/components/header/Header.svelte' ; 
-    import type { Tache } from '$lib/routes/tacheType.ts';
+    import type { Tache } from '$lib/routes/taskType.ts';
     import './home-page.scss';
 
     let tasks: Array<Tache> = $state([]);
