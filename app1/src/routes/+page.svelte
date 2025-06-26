@@ -83,6 +83,4 @@
 
 {#if nb_tasks>0}
     <Task onMarkDone={markTaskDone} id={tasks[tasks.length - 1].id} name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
-{:else}
-    <p>NONONO {nb_tasks} {nb_tasks>0}</p>
 {/if}
