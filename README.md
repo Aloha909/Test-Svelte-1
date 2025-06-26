@@ -1,6 +1,6 @@
 # Test du Readme
 
-Ceci est la branche **main**.
+Ceci est la branche **develop**.
 
 Projet : Liste de tâches (To-Do App)
 
