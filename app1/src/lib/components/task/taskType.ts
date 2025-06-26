@@ -4,4 +4,5 @@ export interface TaskType {
 	description: string;
 	finished: boolean;
 	complexity: number;
+	onMarkDone: (id: number) => void;
 }

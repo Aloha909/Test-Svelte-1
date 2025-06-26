@@ -5,7 +5,7 @@
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
-    let nb_tasks: number = $derived(tasks.length);
+    let nb_tasks = $derived(tasks.length);
     let id_tasks: number = 0;
 
     function add_task(e: SubmitEvent) {
@@ -29,8 +29,9 @@
             description: (description ? description : ""),
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
+            onMarkDone: markTaskDone,
         };
-        
+
         id_tasks += 1;
 
 
@@ -40,6 +41,14 @@
 
         console.log(tasks.length);
         console.log(tasks);
+    }
+
+    function markTaskDone(id: number) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                task.finished = !task.finished;
+            }
+        });
     }
 
 </script>
@@ -52,26 +61,26 @@
     <div>
     <label for="name">Titre</label>  
     <input type="text" id="name" name="name">
-    <div/> <br> 
+    </div> <br> 
 
     <div>
     <label for="description">Description</label>
     <input type="text" id="description" name="description">
-    <div/> <br> 
+    </div> <br> 
 
     <div>
     <label for="state">Terminée ? </label>
     <input type="checkbox" id="state" name="state" value="finished"><br>
-    <div/> <br>
+    </div> <br>
 
     <div>
     <label for="complexity">Complexité</label>
     <input type="number" id="complexity" name="complexity"><br>
-    <div/> <br>
+    </div> <br>
 
     <input type="submit" value="Submit">
 </form>
 
 {#if nb_tasks>0}
-    <Task name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
+    <Task onMarkDone={markTaskDone} id={tasks[tasks.length - 1].id} name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
 {/if}
