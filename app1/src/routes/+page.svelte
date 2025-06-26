@@ -1,5 +1,6 @@
 <script lang="ts">
     import type { Tache } from '$lib/routes/tacheType.ts';
+    import './home-page.scss';
 
     let tasks: Array<Tache> = $state([]);
     let nb_tasks = $derived(tasks.length);
