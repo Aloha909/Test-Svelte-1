@@ -4,26 +4,31 @@
 
   import circleUrl from './circle.svg';
   import circleCheckedUrl from './circle-checked.svg';
+	import type { MouseEventHandler } from 'svelte/elements';
 
   let {
-    id, 
+    id,
 		name,
 		description,
 		finished,
 		complexity,
-	} = $props();
+    onMarkDone,
+	}: TaskType = $props();
+
 
 </script>
 
 <div id="component" class={finished ? "finished" : ""}>
   <div id="first-line">
     <p class="title {finished ? "finished" : ""}">{name}</p>
-    <div class="complexity-wrapper">
+    <div class="complexity-wrapper" onclick={() => onMarkDone(id)}>
       {#if !finished}
         <img src="{circleUrl}" alt="cercle" class="complexity-circle" />
         <span class="complexity-value">{complexity}</span>
-      {:else}
+        <!-- <button onclick={() => onMarkDone(id)}>Terminer</button> -->
+        {:else}
         <img src="{circleCheckedUrl}" alt="cercle coché" class="complexity-circle" />
+        <!-- <button onclick={() => onMarkDone(id)}>Restaurer</button> -->
       {/if}
     </div>
   </div>

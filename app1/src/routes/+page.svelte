@@ -5,7 +5,7 @@
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
-    let nb_tasks: number = $derived(tasks.length);
+    let nb_tasks = $derived(tasks.length);
     let id_tasks: number = 0;
     let counterDisplay: number = 0 ; 
 
@@ -30,8 +30,9 @@
             description: (description ? description : ""),
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
+            onMarkDone: markTaskDone,
         };
-        
+
         id_tasks += 1;
 
 
@@ -41,6 +42,14 @@
 
         console.log(tasks.length);
         console.log(tasks);
+    }
+
+    function markTaskDone(id: number) {
+        tasks.forEach(task => {
+            if (task.id === id) {
+                task.finished = !task.finished;
+            }
+        });
     }
 
 </script>
@@ -63,7 +72,7 @@
     <div>
     <label for="state">Terminée ? </label>
     <input type="checkbox" id="state" name="state" value="finished"><br>
-    </div> <br> 
+    </div> <br>
 
     <div>
     <label for="complexity">Complexité</label>
@@ -73,9 +82,6 @@
     <input type="submit" value="Submit">
 </form>
 
-<br>
-
-
 <div class="task-grid">
 {#each tasks as task}  
     <div> 
@@ -84,7 +90,8 @@
         name={task.name} 
         description={task.description} 
         finished={task.finished} 
-        complexity={task.complexity} />
+        complexity={task.complexity}
+        onMarkDone={markTaskDone} />
     <br>
     </div>
 {/each}
