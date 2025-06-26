@@ -1,4 +1,4 @@
-export interface Tache {
+export interface Task {
 	name: string;
 	description: string;
 	finished: boolean;

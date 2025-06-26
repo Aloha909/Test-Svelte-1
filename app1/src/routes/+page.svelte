@@ -1,9 +1,9 @@
 <script lang="ts">
     import Header from '$lib/components/header/Header.svelte' ; 
-    import type { Tache } from '$lib/routes/taskType.ts';
+    import type { Task } from '$lib/components/task/taskType.ts';
     import './home-page.scss';
 
-    let tasks: Array<Tache> = $state([]);
+    let tasks: Array<Task> = $state([]);
     let nb_tasks = $derived(tasks.length);
 
     function add_task(e: SubmitEvent) {
@@ -21,7 +21,7 @@
             return;
         }
 
-        let task: Tache = {
+        let task: Task = {
             name: name,
             description: (description ? description : ""),
             finished: (finished ? finished: false),
