@@ -19,3 +19,11 @@ form {
 		margin-top: 16px;
 	}
 }
+
+.task-grid {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(5, 90px);
+	gap: 20px;
+	align-items: start;
+}

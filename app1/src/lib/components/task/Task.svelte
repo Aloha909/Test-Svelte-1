@@ -6,11 +6,12 @@
   import circleCheckedUrl from './circle-checked.svg';
 
   let {
+    id, 
 		name,
 		description,
 		finished,
 		complexity,
-	}: TaskType = $props();
+	} = $props();
 
 </script>
 
