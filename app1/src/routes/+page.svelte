@@ -5,7 +5,8 @@
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
-    let nb_tasks = $derived(tasks.length);
+    let nb_tasks: number = $derived(tasks.length);
+    let id_tasks: number = 0;
 
     function add_task(e: SubmitEvent) {
         e.preventDefault();
@@ -23,11 +24,14 @@
         }
 
         let task: TaskType = {
+            id: id_tasks,
             name: name,
             description: (description ? description : ""),
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
         };
+        
+        id_tasks += 1;
 
 
         console.log(task);
