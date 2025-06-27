@@ -50,8 +50,8 @@ io.on('connection', (socket) => {
 
 const port = process.env.PORT || 3000;
 
-const app = server.listen(port, () => {
-	console.log('listening on port 3000');
+const app = server.listen(port, '0.0.0.0', () => {
+	console.log(`listening on port ${port}`);
 });
 
 if (app) {

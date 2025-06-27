@@ -3,7 +3,6 @@
 	import Task from '$lib/components/task/Task.svelte';
     import type { TaskType } from '$lib/components/task/taskType.ts';
     import { socket } from '$lib/stores/socket';
-	import { SocketAddress } from 'net';
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
