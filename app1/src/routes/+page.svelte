@@ -51,6 +51,10 @@
         });
     }
 
+    function deleteTask(id: number) {
+        tasks = tasks.filter(task => task.id !== id);
+    }
+
 </script>
 
 <Header/> 
@@ -82,5 +86,5 @@
 </form>
 
 {#if nb_tasks>0}
-    <Task onMarkDone={markTaskDone} id={tasks[tasks.length - 1].id} name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
+    <Task onMarkDone={markTaskDone} onDelete={deleteTask} id={tasks[tasks.length - 1].id} name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
 {/if}
