@@ -30,6 +30,7 @@
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
             onMarkDone: markTaskDone,
+            onDelete: deleteTask,
         };
 
         id_tasks += 1;
