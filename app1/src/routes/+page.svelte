@@ -31,6 +31,7 @@
             finished: (finished ? finished: false),
             complexity: parseInt(complexity),
             onMarkDone: markTaskDone,
+            onDelete: deleteTask,
         };
 
         id_tasks += 1;
@@ -50,6 +51,10 @@
                 task.finished = !task.finished;
             }
         });
+    }
+
+    function deleteTask(id: number) {
+        tasks = tasks.filter(task => task.id !== id);
     }
 
 </script>
@@ -91,9 +96,9 @@
         description={task.description} 
         finished={task.finished} 
         complexity={task.complexity}
-        onMarkDone={markTaskDone} />
+        onMarkDone={markTaskDone}
+        onDelete={deleteTask} />
     <br>
     </div>
 {/each}
 </div>
-

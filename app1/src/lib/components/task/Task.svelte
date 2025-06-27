@@ -4,6 +4,7 @@
 
   import circleUrl from './circle.svg';
   import circleCheckedUrl from './circle-checked.svg';
+  import trashUrl from './trash.svg';
 	import type { MouseEventHandler } from 'svelte/elements';
 
   let {
@@ -13,6 +14,7 @@
 		finished,
 		complexity,
     onMarkDone,
+    onDelete,
 	}: TaskType = $props();
 
 
@@ -21,6 +23,8 @@
 <div id="component" class={finished ? "finished" : ""}>
   <div id="first-line">
     <p class="title {finished ? "finished" : ""}">{name}</p>
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_static_element_interactions -->
     <div class="complexity-wrapper" onclick={() => onMarkDone(id)}>
       {#if !finished}
         <img src="{circleUrl}" alt="cercle" class="complexity-circle" />
@@ -35,4 +39,5 @@
   <div id="description">
     {description}
   </div>
+  <img src="{trashUrl}" alt="poubelle" class="trash" onclick={() => onDelete(id)}/>
 </div>
