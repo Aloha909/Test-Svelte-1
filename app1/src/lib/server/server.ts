@@ -12,15 +12,36 @@ const server = createServer();
 const io = new SocketIOServer(server, { cors: { origin: '*' } });
 
 io.on('connection', (socket) => {
-	socket.on('create_task', ({ task: TaskType }) => {
+	socket.on('create_task', ({ task }: { task: TaskType }) => {
+		console.log('reçu sur create_task');
 		try {
-			io.broadcast.emit('create_task');
+			socket.broadcast.emit('create_task', { task });
 		} catch (err) {
 			console.error('Error in create_task', err);
+		}
+	});
+	socket.on('delete_task', ({ id }: { id: number }) => {
+		console.log('reçu sur delete_task');
+		try {
+			socket.broadcast.emit('delete_task', { id });
+		} catch (err) {
+			console.error('Error in delete_task', err);
+		}
+	});
+	socket.on('mark_done', ({ id }: { id: number }) => {
+		console.log('reçu sur mark_done');
+		try {
+			socket.broadcast.emit('mark_done', { id });
+		} catch (err) {
+			console.error('Error in mark_done', err);
 		}
 	});
 });
 
 server.listen(3000, () => {
 	console.log('listening on port 3000');
+});
+
+server.on('error', (err) => {
+	console.error('Server error:', err);
 });

@@ -12,6 +12,12 @@
     socket.on('create_task', (task: TaskType) => {
 			tasks.push(task);
 		});
+    socket.on('delete_task', (id: number) => {
+			deleteTask(id, false);
+		});
+    socket.on('mark_done', (id: number) => {
+			markTaskDone(id, false);
+		});
 
     function add_task(e: SubmitEvent) {
         e.preventDefault();
@@ -50,16 +56,22 @@
         console.log(tasks);
     }
 
-    function markTaskDone(id: number) {
+    function markTaskDone(id: number, share: Boolean=true) {
         tasks.forEach(task => {
             if (task.id === id) {
                 task.finished = !task.finished;
             }
+        if (share) {
+            socket.emit('delete_task', { id });
+        }
         });
     }
 
-    function deleteTask(id: number) {
+    function deleteTask(id: number, share: Boolean=true) {
         tasks = tasks.filter(task => task.id !== id);
+        if (share) {
+            socket.emit('mark_done', { id });
+        }
     }
 
     function filter_array() {
