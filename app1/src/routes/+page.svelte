@@ -7,6 +7,7 @@
     let tasks: Array<TaskType> = $state([]);
     let nb_tasks = $derived(tasks.length);
     let id_tasks: number = 0;
+    let counterDisplay: number = 0 ; 
 
     function add_task(e: SubmitEvent) {
         e.preventDefault();
@@ -86,6 +87,18 @@
     <input type="submit" value="Submit">
 </form>
 
-{#if nb_tasks>0}
-    <Task onMarkDone={markTaskDone} onDelete={deleteTask} id={tasks[tasks.length - 1].id} name={tasks[tasks.length - 1].name} description={tasks[tasks.length - 1].description} finished={tasks[tasks.length - 1].finished} complexity={tasks[tasks.length - 1].complexity} />
-{/if}
+<div class="task-grid">
+{#each tasks as task}  
+    <div> 
+    <Task 
+        id ={task.id}  
+        name={task.name} 
+        description={task.description} 
+        finished={task.finished} 
+        complexity={task.complexity}
+        onMarkDone={markTaskDone}
+        onDelete={deleteTask} />
+    <br>
+    </div>
+{/each}
+</div>

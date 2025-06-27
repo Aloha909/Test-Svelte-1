@@ -17,6 +17,7 @@
     onDelete,
 	}: TaskType = $props();
 
+
 </script>
 
 <div id="component" class={finished ? "finished" : ""}>
