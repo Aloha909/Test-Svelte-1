@@ -7,7 +7,15 @@ import { Server as SocketIOServer } from 'socket.io';
 // import { logger } from '$lib/server/logger';
 import type { TaskType } from '$lib/components/task/taskType.ts';
 
-const server = createServer();
+const server = createServer((req: IncomingMessage, res: ServerResponse) => {
+	if (req.url === '/') {
+		res.writeHead(200, { 'Content-Type': 'text/plain' });
+		res.end('WebSocket server is running.');
+	} else {
+		res.writeHead(404);
+		res.end();
+	}
+});
 
 const io = new SocketIOServer(server, { cors: { origin: '*' } });
 
