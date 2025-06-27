@@ -3,11 +3,17 @@
 	import Task from '$lib/components/task/Task.svelte';
     import type { TaskType } from '$lib/components/task/taskType.ts';
     import { socket } from '$lib/stores/socket';
+	import { SocketAddress } from 'net';
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
     let filtered_tasks: Array<TaskType> = $derived(tasks)
     let id_tasks: number = 0;
+
+    socket.on("test", () => {
+        console.log("test");
+        socket.emit("test");
+    })
 
     socket.on('create_task', (task: TaskType) => {
 			tasks.push(task);

@@ -12,6 +12,8 @@ const server = createServer();
 const io = new SocketIOServer(server, { cors: { origin: '*' } });
 
 io.on('connection', (socket) => {
+	console.log('bien connecte');
+
 	socket.on('create_task', ({ task }: { task: TaskType }) => {
 		console.log('reçu sur create_task');
 		try {
@@ -36,11 +38,27 @@ io.on('connection', (socket) => {
 			console.error('Error in mark_done', err);
 		}
 	});
+	socket.on('test', () => {
+		console.log('reçu sur test');
+		try {
+			socket.broadcast.emit('test');
+		} catch (err) {
+			console.error('Error in test', err);
+		}
+	});
 });
 
-server.listen(3000, () => {
+const port = process.env.PORT || 3000;
+
+const app = server.listen(port, () => {
 	console.log('listening on port 3000');
 });
+
+if (app) {
+	console.log('=)');
+} else {
+	console.log('=(');
+}
 
 server.on('error', (err) => {
 	console.error('Server error:', err);
