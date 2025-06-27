@@ -21,9 +21,10 @@ form {
 }
 
 .task-grid {
-	display: grid;
-	grid-auto-flow: column;
-	grid-template-rows: repeat(5, 90px);
+	display: flex;
+	flex-wrap: wrap; //C’est ça qui gère automatiquement le retour à la ligne
 	gap: 20px;
-	align-items: start;
+	justify-content: flex-start; // Alignement
+	align-items: flex-start; // Alignement vertical
+	padding: 1rem;
 }
