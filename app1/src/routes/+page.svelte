@@ -57,7 +57,22 @@
         tasks = tasks.filter(task => task.id !== id);
     }
 
+    
+    function openNav() {
+    document.getElementById("mySidepanel").style.width = "250px";
+    }
+
+    
+    function closeNav() {
+    document.getElementById("mySidepanel").style.width = "0";
+    } 
+
+    
+
 </script>
+
+<!-- open button du panel-->
+<button class="openbtn" onclick= {openNav} >&#9776; Menu</button>  
 
 <Header/> 
 
@@ -102,3 +117,24 @@
     </div>
 {/each}
 </div>
+
+<!-- Sidebar -->
+<div id = "mySidepanel" class="sidebar">
+    <h2> ToDO App </h2>
+    <a href="javascript:void(0)" class="closebtn" onclick={closeNav} >&times;</a>
+    <br> 
+    <h3>Filtrer mes tâches : </h3>
+    <div>
+    <label for="complexity">Complexité</label>
+    <input type="number" id="complexity" name="complexity"><br>
+    </div> <br> 
+
+    <button>
+      Filtrer
+    </button>
+    
+</div>
+
+
+
+
