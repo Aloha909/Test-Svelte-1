@@ -13,7 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
-		"test": "npm run test:unit -- --run",
+		"test": "bun run test:unit -- --run",
 		"server": "vite build && bun src/lib/server/server.ts"
 	},
 	"devDependencies": {

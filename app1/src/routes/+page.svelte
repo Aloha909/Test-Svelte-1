@@ -2,11 +2,16 @@
     import Header from '$lib/components/header/Header.svelte' ; 
 	import Task from '$lib/components/task/Task.svelte';
     import type { TaskType } from '$lib/components/task/taskType.ts';
+    import { socket } from '$lib/stores/socket';
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
     let filtered_tasks: Array<TaskType> = $derived(tasks)
     let id_tasks: number = 0;
+
+    socket.on('create_task', (task: TaskType) => {
+			tasks.push(task);
+		});
 
     function add_task(e: SubmitEvent) {
         e.preventDefault();
@@ -31,6 +36,8 @@
             onMarkDone: markTaskDone,
             onDelete: deleteTask,
         };
+
+        socket.emit('create_task', { task });
 
         id_tasks += 1;
 
