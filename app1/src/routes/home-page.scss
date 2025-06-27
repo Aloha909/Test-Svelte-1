@@ -9,12 +9,19 @@ form {
 	border-radius: 5%;
 	border: 1px solid black;
 
-	label {
+	.line {
+		width: 80%;
 		margin: auto;
 		margin-top: 16px;
 	}
 
-	input {
+	.line.first {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.submit-btn {
 		margin: auto;
 		margin-top: 16px;
 	}
