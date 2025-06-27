@@ -5,9 +5,7 @@
     import './home-page.scss';
 
     let tasks: Array<TaskType> = $state([]);
-    let nb_tasks = $derived(tasks.length);
     let id_tasks: number = 0;
-    let counterDisplay: number = 0 ; 
 
     function add_task(e: SubmitEvent) {
         e.preventDefault();
@@ -16,7 +14,6 @@
 
         let name = document.getElementById("name").value;
         let description = document.getElementById("description").value;
-        let finished = document.getElementById("state").checked;
         let complexity = document.getElementById("complexity").value;
 
         if (!name || !complexity) {
@@ -28,7 +25,7 @@
             id: id_tasks,
             name: name,
             description: (description ? description : ""),
-            finished: (finished ? finished: false),
+            finished: false,
             complexity: parseInt(complexity),
             onMarkDone: markTaskDone,
             onDelete: deleteTask,
@@ -61,30 +58,25 @@
 
 <Header/> 
 
-<p>Nombre de taches : {nb_tasks}</p>
-
 <form onsubmit={add_task}>
-    <div>
-    <label for="name">Titre</label>  
-    <input type="text" id="name" name="name">
-    </div> <br> 
+    <div class="line first">
+        <div>
+            <label for="name">Titre</label>  
+            <input type="text" id="name" name="name">
+        </div>
 
-    <div>
-    <label for="description">Description</label>
-    <input type="text" id="description" name="description">
-    </div> <br> 
+        <div>
+            <label for="complexity">Complexité</label>
+            <input type="number" id="complexity" name="complexity"><br>
+        </div>
+    </div>
 
-    <div>
-    <label for="state">Terminée ? </label>
-    <input type="checkbox" id="state" name="state" value="finished"><br>
-    </div> <br>
+    <div class="line">
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description">
+    </div>
 
-    <div>
-    <label for="complexity">Complexité</label>
-    <input type="number" id="complexity" name="complexity"><br>
-    </div> <br>
-
-    <input type="submit" value="Submit">
+    <input class="submit-btn" type="submit" value="Submit">
 </form>
 
 <div class="task-grid">
