@@ -1,15 +1,13 @@
-import { handler } from '$root/build/handler.js';
+// import { handler } from '$root/build/handler.js';
 import { createServer, type IncomingMessage, type ServerResponse, type ServerOptions } from 'http';
 import { Server as SocketIOServer } from 'socket.io';
 // import type { Room } from '$lib/types/room.js';
 // import type { Socket } from 'socket.io';
 // import { handleSocketError } from '$lib/server/errorHandler';
 // import { logger } from '$lib/server/logger';
-import { TaskType } from '$lib/components/task/taskType';
+import type { TaskType } from '$lib/components/task/taskType.ts';
 
-const server = createServer(
-	handler as ServerOptions<typeof IncomingMessage, typeof ServerResponse>
-);
+const server = createServer();
 
 const io = new SocketIOServer(server, { cors: { origin: '*' } });
 
