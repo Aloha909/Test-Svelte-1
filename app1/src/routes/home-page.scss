@@ -40,11 +40,11 @@
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
-	width: 250px;
+	width: 0px;
 	height: 100vh; // Full height viewport
 	position: fixed; // Sticks to the side
 	top: 0;
-	left: 0;
+	right: 0;
 	background-color: #abd7f3;
 	overflow-y: auto; // Scroll inside if needed
 	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -84,9 +84,9 @@
 .closebtn {
 	position: absolute;
 	top: 0;
-	right: 25px;
+	left: 0;
 	font-size: 36px;
-	margin-left: 50px;
+	margin-left: 10px;
 }
 
 /* Style the button that is used to open the sidepanel */

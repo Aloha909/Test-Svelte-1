@@ -57,7 +57,7 @@
 
     
     function openNav() {
-    document.getElementById("mySidepanel").style.width = "250px";
+    document.getElementById("mySidepanel").style.width = "350px";
     }
 
     
@@ -146,7 +146,6 @@
 
 <!-- open button du panel-->
 <button class="openbtn" onclick= {openNav} >&#9776; Menu</button> 
-
 <Header/> 
 
 <form id="add-menu" onsubmit={add_task}>
@@ -204,8 +203,8 @@
 
 <!-- Sidebar -->
 <div id = "mySidepanel" class="sidebar">
-    <h2> ToDO App </h2>
-    <a href="javascript:void(0)" class="closebtn" onclick={closeNav} >&times;</a>
+    <h2 style ='text-align : center' > ToDO App </h2>
+    <a class="closebtn" onclick={closeNav} >&times;</a>
     <br> 
     <h3>Filtrer mes tâches : </h3>
     <div>
